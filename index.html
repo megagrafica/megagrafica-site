@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mega Gráfica - Soluções Gráficas Profissionais no RJ</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
+    
+    <!-- Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            line-height: 60px;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        
+        .whatsapp-float:hover {
+            background: #128C7E;
+            color: white;
+        }
+        
+        /* Footer */
+        .footer-bottom {
+            background: #222;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+        
+        /* Logo */
+        .logo img {
+            max-width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HITSAAPP -->
+    <h1>HITSAAPP --></h1>
+
+    <!-- Botão WhatsApp -->
+    <a href="https://wa.me/5521992067621" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <main>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo-mega-grafica.png" alt="Mega Gráfica">
+            </div>
+            
+            <h1>Mega Gráfica</h1>
+            
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod massa id nisi ultricies, nec hendrerit nibh ultrices. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</p>
+            
+            <!-- Formulário Hero -->
+            <form id="form-hero">
+                <input type="text" placeholder="Seu nome">
+                <input type="tel" placeholder="Seu telefone">
+                <button type="submit">Enviar</button>
+            </form>
+            
+            <!-- Formulário Contato -->
+            <form id="form-conta">
+                <input type="text" placeholder="Seu nome">
+                <input type="email" placeholder="Seu email">
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Mega Gráfica - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        // Formulário Hero - WhatsApp
+        document.getElementById("form-hero").addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nome = this.querySelector('input[type="text"]').value;
+            const tel = this.querySelector('input[type="tel"]').value;
+            window.open('https://wa.me/5521992067621?text=Olá, me chamo ' + nome + '. Meu telefone é ' + tel, '_blank');
+        });
+
+        // Formulário Conta - WhatsApp
+        document.getElementById("form-conta").addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nome = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            window.open('https://wa.me/5521992067621?text=Contato: ' + nome + ' - Email: ' + email, '_blank');
+        });
+
+        // Forçar carregamento da imagem no mobile
+        window.addEventListener('load', function() {
+            var logo = document.querySelector('.logo img');
+            if (logo && logo.complete === false) {
+                logo.src = 'images/logo-mega-grafica.png';
+            }
+        });
+    </script>
+
+</body>
+</html>
