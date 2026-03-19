@@ -737,7 +737,7 @@
             }
         }
 
-        /* TESTIMONIALS */
+        /* TESTIMONIALS - CARROSSEL */
         .testimonials {
             background: white;
             border-radius: 30px;
@@ -745,33 +745,72 @@
             margin: 4rem 0;
             width: 100%;
             animation: scaleIn 0.8s ease-out;
+            position: relative;
         }
 
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+        .testimonial-carousel-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 0 40px;
+        }
+
+        .testimonial-carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 20px;
         }
 
         .testimonial-card {
+            min-width: calc(33.333% - 14px);
             background: #f8fafc;
             border-radius: 20px;
             padding: 2rem;
             text-align: center;
             transition: all 0.5s ease;
-            animation: fadeInUp 0.8s ease-out;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            font-size: 8rem;
+            color: rgba(249, 115, 22, 0.1);
+            font-family: serif;
+            z-index: 0;
         }
 
         .testimonial-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 15px 30px rgba(249,115,22,0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(249,115,22,0.15);
             background: white;
         }
 
-        .testimonial-text {
+        .testimonial-rating {
+            color: #fbbf24;
+            margin-bottom: 1rem;
             font-size: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-rating i {
+            margin: 0 2px;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
             font-style: italic;
             margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+            line-height: 1.6;
         }
 
         .testimonial-author {
@@ -779,18 +818,20 @@
             align-items: center;
             justify-content: center;
             gap: 1rem;
+            position: relative;
+            z-index: 1;
         }
 
         .author-avatar {
             width: 50px;
             height: 50px;
-            background: #f97316;
+            background: linear-gradient(135deg, #f97316, #fb923c);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             transition: all 0.5s ease;
         }
 
@@ -799,7 +840,99 @@
             background: #0f172a;
         }
 
-        /* CONTACT */
+        .author-location {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        /* BOTÃO DE FEEDBACK */
+        .feedback-badge {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            animation: float 3s infinite;
+        }
+
+        .feedback-badge:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 15px 35px rgba(249, 115, 22, 0.5);
+        }
+
+        .feedback-badge i {
+            font-size: 1.2rem;
+        }
+
+        /* BOTÕES DO CARROSSEL */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f97316;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: #f97316;
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev-btn {
+            left: 0;
+        }
+
+        .next-btn {
+            right: 0;
+        }
+
+        /* INDICADORES */
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: #f97316;
+            transform: scale(1.3);
+        }
+
+        /* CONTACT (mantido igual) */
         .contact {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
@@ -1041,7 +1174,7 @@
             box-shadow: 0 20px 40px rgba(37, 211, 102, 0.5);
         }
 
-        /* RESPONSIVIDADE - VERSÃO MOBILE CORRIGIDA E MAIS COMPACTA */
+        /* RESPONSIVIDADE */
         @media (max-width: 768px) {
             .top-bar {
                 flex-direction: column;
@@ -1054,13 +1187,11 @@
                 gap: 0.5rem;
             }
             
-            /* HEADER MAIS COMPACTO */
             .header {
                 padding: 0.5rem 3%;
                 gap: 0.5rem;
             }
             
-            /* LOGO MENOR */
             .logo img {
                 height: 40px;
             }
@@ -1075,7 +1206,6 @@
                 font-weight: 600;
             }
             
-            /* WHATSAPP ÍCONE MENOR */
             .btn-header-wpp {
                 width: 35px;
                 height: 35px;
@@ -1135,6 +1265,22 @@
             .paper-3 {
                 bottom: 5px;
                 right: 50px;
+            }
+            
+            .testimonial-card {
+                min-width: calc(50% - 10px);
+            }
+            
+            .feedback-badge {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin: 0 auto 2rem;
+                width: fit-content;
+            }
+            
+            .testimonial-carousel-container {
+                padding: 0 30px;
             }
         }
         
@@ -1197,6 +1343,10 @@
             .services-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .testimonial-card {
+                min-width: 100%;
+            }
         }
     </style>
 </head>
@@ -1215,24 +1365,24 @@
         </div>
     </div>
 
-  <!-- HEADER COM LOGO E WHATSAPP ÍCONE ORIGINAL -->
-<header class="header">
-    <div class="logo">
-        <img src="images/logo-mega-grafica.png" 
-             alt="Mega Gráfica"
-             onerror="this.style.display='none'; this.parentElement.innerHTML='Mega Gráfica';">
-    </div>
-    <nav class="nav-menu">
-        <a href="#home">Home</a>
-        <a href="#servicos">Serviços</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#contato">Contato</a>
-        <a href="#depoimentos">Clientes</a>
-    </nav>
-    <a href="https://wa.me/5521992067621" class="btn-header-wpp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-</header>
+    <!-- HEADER COM LOGO E WHATSAPP ÍCONE ORIGINAL -->
+    <header class="header">
+        <div class="logo">
+            <img src="images/logo-mega-grafica.png" 
+                 alt="Mega Gráfica"
+                 onerror="this.style.display='none'; this.parentElement.innerHTML='Mega Gráfica';">
+        </div>
+        <nav class="nav-menu">
+            <a href="#home">Home</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+            <a href="#depoimentos">Clientes</a>
+        </nav>
+        <a href="https://wa.me/5521992067621" class="btn-header-wpp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </header>
 
     <!-- HERO -->
     <section class="hero" id="home">
@@ -1256,7 +1406,7 @@
                         <option>Panfletos</option>
                         <option>Cartões de Visita</option>
                         <option>Adesivos</option>
-                        <option>Receituarios</option>
+                        <option>Receituários</option>
                         <option>Banners</option>    
                     </select>
                     <textarea rows="3" placeholder="Descreva o que precisa" required></textarea>
@@ -1319,8 +1469,7 @@
             <div class="process-step"><div class="step-number">4</div><h3>Entregamos</h3></div>
         </div>
 
-
-           <!-- CONTATO -->
+        <!-- CONTATO -->
         <section id="contato" class="contact">
             <div class="contact-grid">
                 <div class="contact-info">
@@ -1339,26 +1488,123 @@
             </div>
         </section>
 
-        <!-- DEPOIMENTOS (CLIENTES) - AGORA POR ÚLTIMO -->
+        <!-- DEPOIMENTOS - CARROSSEL -->
         <section id="depoimentos" class="testimonials">
+            <!-- Botão de Feedback Flutuante -->
+            <div class="feedback-badge" onclick="window.location.href='#contato'">
+                <i class="fas fa-pen"></i>
+                <span>Deixe seu Feedback</span>
+            </div>
+            
             <div class="section-title">
                 <h2>O que nossos <span class="highlight">clientes</span> dizem</h2>
             </div>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-text">"Excelente qualidade e entrega rápida!"</div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">A</div>
-                        <div><h4>Ana Silva</h4></div>
+            
+            <div class="testimonial-carousel-container">
+                <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next-btn" onclick="moveCarousel(1)"><i class="fas fa-chevron-right"></i></button>
+                
+                <div class="testimonial-carousel" id="testimonialCarousel">
+                    <!-- Card 1 - Padaria Pão Quente -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <div class="testimonial-text">"A Mega Gráfica salvou nossa padaria! Os panfletos ficaram lindos e o papel é de alta qualidade. As entregas são sempre no prazo. Recomendo demais!"</div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fas fa-store"></i></div>
+                            <div>
+                                <h4>Padaria Pão Quente</h4>
+                                <p class="author-location">Copacabana, RJ</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2 - Loja Moda Fashion -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <div class="testimonial-text">"Precisávamos de etiquetas personalizadas e tags para nossas roupas com urgência. A Mega Gráfica entregou em 48h com uma qualidade impressionante! Cliente fiel agora!"</div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fas fa-tshirt"></i></div>
+                            <div>
+                                <h4>Moda Fashion</h4>
+                                <p class="author-location">Barra da Tijuca, RJ</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 3 - Restaurante Sabor Caseiro -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <div class="testimonial-text">"Os cardápios que a Mega Gráfica fez para nosso restaurante são incríveis! Acabamento de primeira e o design ficou exatamente como queríamos. Entregaram antes do prazo!"</div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fas fa-utensils"></i></div>
+                            <div>
+                                <h4>Restaurante Sabor Caseiro</h4>
+                                <p class="author-location">Tijuca, RJ</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 4 - Imobiliária Prime -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <div class="testimonial-text">"Fazemos todos os nossos folders e banners com a Mega Gráfica. Profissionalismo, pontualidade e um atendimento nota 10. Nossos corretores adoram o material!"</div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fas fa-building"></i></div>
+                            <div>
+                                <h4>Imobiliária Prime</h4>
+                                <p class="author-location">Centro, RJ</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 5 - Salão Beleza Pura -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <div class="testimonial-text">"Os cartões de visita e panfletos ficaram maravilhosos! Minhas clientes elogiam muito a qualidade. A Mega Gráfica é parceira do meu salão há 2 anos. Super recomendo!"</div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fas fa-cut"></i></div>
+                            <div>
+                                <h4>Beleza Pura</h4>
+                                <p class="author-location">Botafogo, RJ</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 6 - Academia Corpo em Ação -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <div class="testimonial-text">"Fizeram nossos banners e adesivos para a academia com uma qualidade incrível! Resistente e com cores vibrantes. Já virou nossa gráfica oficial. Equipe muito atenciosa!"</div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fas fa-dumbbell"></i></div>
+                            <div>
+                                <h4>Academia Corpo em Ação</h4>
+                                <p class="author-location">Niterói, RJ</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">"Atendimento maravilhoso, recomendo!"</div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">C</div>
-                        <div><h4>Carlos</h4></div>
-                    </div>
-                </div>
+            </div>
+            
+            <!-- Indicadores -->
+            <div class="carousel-indicators" id="carouselIndicators">
+                <span class="indicator active" onclick="goToSlide(0)"></span>
+                <span class="indicator" onclick="goToSlide(1)"></span>
+                <span class="indicator" onclick="goToSlide(2)"></span>
+                <span class="indicator" onclick="goToSlide(3)"></span>
+                <span class="indicator" onclick="goToSlide(4)"></span>
+                <span class="indicator" onclick="goToSlide(5)"></span>
             </div>
         </section>
     </div>
@@ -1384,12 +1630,85 @@
         </div>
     </footer>
 
-    <!-- WHATSAPP FLUTUANTE (ÍCONE ORIGINAL) -->
+    <!-- WHATSAPP FLUTUANTE -->
     <a href="https://wa.me/5521992067621" class="whatsapp-float">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
     <script>
+        // CARROSSEL DE DEPOIMENTOS
+        let currentIndex = 0;
+        const carousel = document.getElementById('testimonialCarousel');
+        const cards = document.querySelectorAll('.testimonial-card');
+        const indicators = document.querySelectorAll('.indicator');
+        
+        function updateCarousel() {
+            const cardWidth = cards[0].offsetWidth + 20; // 20px gap
+            carousel.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            
+            // Atualizar indicadores
+            indicators.forEach((indicator, index) => {
+                if (index === currentIndex) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+        
+        function moveCarousel(direction) {
+            const maxIndex = cards.length - 3; // Mostra 3 cards por vez
+            currentIndex += direction;
+            
+            if (currentIndex < 0) {
+                currentIndex = 0;
+            } else if (currentIndex > maxIndex) {
+                currentIndex = maxIndex;
+            }
+            
+            updateCarousel();
+        }
+        
+        function goToSlide(index) {
+            const maxIndex = cards.length - 3;
+            if (index <= maxIndex) {
+                currentIndex = index;
+                updateCarousel();
+            }
+        }
+        
+        // Auto-play do carrossel
+        let autoPlayInterval = setInterval(() => {
+            const maxIndex = cards.length - 3;
+            if (currentIndex >= maxIndex) {
+                currentIndex = 0;
+            } else {
+                currentIndex++;
+            }
+            updateCarousel();
+        }, 5000); // Muda a cada 5 segundos
+        
+        // Pausar auto-play quando o usuário interagir com os botões
+        const buttons = document.querySelectorAll('.carousel-btn');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = setInterval(() => {
+                    const maxIndex = cards.length - 3;
+                    if (currentIndex >= maxIndex) {
+                        currentIndex = 0;
+                    } else {
+                        currentIndex++;
+                    }
+                    updateCarousel();
+                }, 5000);
+            });
+        });
+        
+        // Atualizar carrossel quando a janela for redimensionada
+        window.addEventListener('resize', updateCarousel);
+        
+        // Formulários (já existentes)
         document.getElementById('form-hero')?.addEventListener('submit', function(e) {
             e.preventDefault();
             const nome = this.querySelector('input[type="text"]').value;
