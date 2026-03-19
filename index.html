@@ -162,7 +162,7 @@
             animation: fadeInUp 0.8s ease-out 0.1s both;
         }
 
-        /* LOGO - VERSÃO CORRIGIDA PARA MOBILE */
+        /* LOGO */
         .logo {
             display: flex;
             align-items: center;
@@ -177,18 +177,11 @@
             max-width: 100%;
             transition: all 0.3s ease;
             border-radius: 10px;
-            /* Garantir que a imagem seja carregada */
-            content-visibility: auto;
         }
 
         .logo img:hover {
             transform: scale(1.05) rotateY(5deg);
             filter: drop-shadow(0 10px 15px rgba(249, 115, 22, 0.3));
-        }
-
-        /* Garantir que a imagem carregue no mobile */
-        .logo img {
-            -webkit-tap-highlight-color: transparent;
         }
 
         .nav-menu {
@@ -226,43 +219,39 @@
             width: 100%;
         }
 
-        .btn-header {
-            background: #f97316;
+        /* NOVO BOTÃO WHATSAPP ÍCONE */
+        .btn-header-wpp {
+            background: #25d366;
             color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            display: inline-flex;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
             align-items: center;
-            gap: 0.5rem;
-            white-space: nowrap;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.8rem;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            animation: pulse-wpp 2s infinite;
         }
 
-        .btn-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-            z-index: -1;
+        .btn-header-wpp:hover {
+            transform: scale(1.1) rotate(360deg);
+            background: #128C7E;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
         }
 
-        .btn-header:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.4);
-        }
-
-        .btn-header:hover::before {
-            left: 100%;
+        @keyframes pulse-wpp {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
         }
 
         /* HERO */
@@ -617,104 +606,105 @@
         .about:hover .about-image i {
             transform: rotateY(360deg);
         }
-/* ANIMAÇÃO DA IMPRESSORA "CUSPINDO" PAPEL */
-.printer-animation {
-    position: relative;
-    background: #fff4ed;
-    border-radius: 20px;
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.5s ease;
-    animation: float 3s infinite;
-    overflow: visible;
-    min-height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        
+        /* ANIMAÇÃO DA IMPRESSORA "CUSPINDO" PAPEL */
+        .printer-animation {
+            position: relative;
+            background: #fff4ed;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.5s ease;
+            animation: float 3s infinite;
+            overflow: visible;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.printer-animation i {
-    font-size: 8rem;
-    color: #f97316;
-    font-style: normal;
-    transition: all 0.5s ease;
-    position: relative;
-    z-index: 10;
-    filter: drop-shadow(0 10px 15px rgba(249, 115, 22, 0.3));
-}
+        .printer-animation i {
+            font-size: 8rem;
+            color: #f97316;
+            font-style: normal;
+            transition: all 0.5s ease;
+            position: relative;
+            z-index: 10;
+            filter: drop-shadow(0 10px 15px rgba(249, 115, 22, 0.3));
+        }
 
-/* Folhas de papel saindo da impressora */
-.paper-sheet {
-    position: absolute;
-    background: white;
-    width: 60px;
-    height: 45px;
-    border-radius: 5px 5px 0 0;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transform-origin: top center;
-    z-index: 5;
-}
+        /* Folhas de papel saindo da impressora */
+        .paper-sheet {
+            position: absolute;
+            background: white;
+            width: 60px;
+            height: 45px;
+            border-radius: 5px 5px 0 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform-origin: top center;
+            z-index: 5;
+        }
 
-/* Posicionamento das folhas */
-.paper-1 {
-    bottom: 30px;
-    right: 30px;
-    animation: spitPaper 2s ease-in-out infinite;
-    background: linear-gradient(135deg, #ffffff, #f5f5f5);
-}
+        /* Posicionamento das folhas */
+        .paper-1 {
+            bottom: 30px;
+            right: 30px;
+            animation: spitPaper 2s ease-in-out infinite;
+            background: linear-gradient(135deg, #ffffff, #f5f5f5);
+        }
 
-.paper-2 {
-    bottom: 20px;
-    right: 45px;
-    animation: spitPaper 2s ease-in-out infinite 0.4s;
-    background: linear-gradient(135deg, #ffffff, #f0f0f0);
-}
+        .paper-2 {
+            bottom: 20px;
+            right: 45px;
+            animation: spitPaper 2s ease-in-out infinite 0.4s;
+            background: linear-gradient(135deg, #ffffff, #f0f0f0);
+        }
 
-.paper-3 {
-    bottom: 10px;
-    right: 60px;
-    animation: spitPaper 2s ease-in-out infinite 0.8s;
-    background: linear-gradient(135deg, #ffffff, #eaeaea);
-}
+        .paper-3 {
+            bottom: 10px;
+            right: 60px;
+            animation: spitPaper 2s ease-in-out infinite 0.8s;
+            background: linear-gradient(135deg, #ffffff, #eaeaea);
+        }
 
-/* Animação do papel saindo */
-@keyframes spitPaper {
-    0% {
-        transform: translateY(0) rotate(0deg) scale(0.8);
-        opacity: 0;
-    }
-    20% {
-        transform: translateY(-10px) rotate(-2deg) scale(1);
-        opacity: 1;
-    }
-    40% {
-        transform: translateY(-25px) rotate(-5deg) scale(1.1);
-        opacity: 1;
-    }
-    60% {
-        transform: translateY(-40px) rotate(-8deg) scale(1.2);
-        opacity: 0.8;
-    }
-    80% {
-        transform: translateY(-55px) rotate(-12deg) scale(1.3);
-        opacity: 0.4;
-    }
-    100% {
-        transform: translateY(-70px) rotate(-15deg) scale(1.4);
-        opacity: 0;
-    }
-}
+        /* Animação do papel saindo */
+        @keyframes spitPaper {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            20% {
+                transform: translateY(-10px) rotate(-2deg) scale(1);
+                opacity: 1;
+            }
+            40% {
+                transform: translateY(-25px) rotate(-5deg) scale(1.1);
+                opacity: 1;
+            }
+            60% {
+                transform: translateY(-40px) rotate(-8deg) scale(1.2);
+                opacity: 0.8;
+            }
+            80% {
+                transform: translateY(-55px) rotate(-12deg) scale(1.3);
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-70px) rotate(-15deg) scale(1.4);
+                opacity: 0;
+            }
+        }
 
-/* Efeito de vibração na impressora quando está "imprimindo" */
-.printer-animation:hover i {
-    animation: printerVibrate 0.3s ease-in-out infinite;
-}
+        /* Efeito de vibração na impressora quando está "imprimindo" */
+        .printer-animation:hover i {
+            animation: printerVibrate 0.3s ease-in-out infinite;
+        }
 
-@keyframes printerVibrate {
-    0%, 100% { transform: rotate(0deg) scale(1); }
-    25% { transform: rotate(-2deg) scale(1.05); }
-    75% { transform: rotate(2deg) scale(1.05); }
-}
+        @keyframes printerVibrate {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(-2deg) scale(1.05); }
+            75% { transform: rotate(2deg) scale(1.05); }
+        }
 
         /* PROCESS */
         .process-grid {
@@ -1086,7 +1076,7 @@
             color: #64748b;
         }
 
-        /* WHATSAPP */
+        /* WHATSAPP FLUTUANTE */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -1144,8 +1134,6 @@
             .logo img {
                 height: 50px;
                 margin: 0 auto;
-                /* Forçar carregamento no mobile */
-                content: url('images/logo-mega-grafica.png');
             }
 
             .nav-menu {
@@ -1157,9 +1145,11 @@
                 font-size: 0.9rem;
             }
 
-            .btn-header {
-                padding: 0.6rem 1.5rem;
-                font-size: 0.9rem;
+            .btn-header-wpp {
+                width: 45px;
+                height: 45px;
+                font-size: 1.5rem;
+                margin: 0 auto;
             }
 
             .hero-content {
@@ -1223,29 +1213,30 @@
             .about-image i {
                 font-size: 5rem;
             }
-.printer-animation i {
-    font-size: 5rem;
-}
+            
+            .printer-animation i {
+                font-size: 5rem;
+            }
 
-.paper-sheet {
-    width: 45px;
-    height: 35px;
-}
+            .paper-sheet {
+                width: 45px;
+                height: 35px;
+            }
 
-.paper-1 {
-    bottom: 25px;
-    right: 20px;
-}
+            .paper-1 {
+                bottom: 25px;
+                right: 20px;
+            }
 
-.paper-2 {
-    bottom: 15px;
-    right: 35px;
-}
+            .paper-2 {
+                bottom: 15px;
+                right: 35px;
+            }
 
-.paper-3 {
-    bottom: 5px;
-    right: 50px;
-}
+            .paper-3 {
+                bottom: 5px;
+                right: 50px;
+            }
 
             .process-grid {
                 grid-template-columns: 1fr;
@@ -1312,22 +1303,24 @@
             .top-bar-contact {
                 gap: 0.5rem;
             }
-.printer-animation i {
-    font-size: 4rem;
-}
+            
+            .printer-animation i {
+                font-size: 4rem;
+            }
 
-.paper-sheet {
-    width: 35px;
-    height: 28px;
-}
+            .paper-sheet {
+                width: 35px;
+                height: 28px;
+            }
 
             .nav-menu {
                 flex-wrap: wrap;
             }
 
-            .btn-header {
-                padding: 0.6rem 1rem;
-                font-size: 0.85rem;
+            .btn-header-wpp {
+                width: 40px;
+                height: 40px;
+                font-size: 1.3rem;
             }
 
             .hero {
@@ -1385,26 +1378,25 @@
         </div>
     </div>
 
-   <!-- HEADER COM LOGO - VERSÃO MAIS ROBUSTA -->
-<header class="header">
-    <div class="logo">
-        <!-- Tenta vários caminhos diferentes -->
-        <img src="images/logo-mega-grafica.png" 
-             alt="Mega Gráfica"
-             onerror="this.onerror=null; this.src='./images/logo-mega-grafica.png'; 
-                      this.onerror=function(){this.src='/images/logo-mega-grafica.png';}">
-    </div>
-    <nav class="nav-menu">
-        <a href="#home">Home</a>
-        <a href="#servicos">Serviços</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#depoimentos">Clientes</a>
-        <a href="#contato">Contato</a>
-    </nav>
-    <a href="https://wa.me/5521992067621" class="btn-header">
-        <i class="fab fa-whatsapp"></i> WhatsApp
-    </a>
-</header>
+    <!-- HEADER COM LOGO E WHATSAPP ÍCONE -->
+    <header class="header">
+        <div class="logo">
+            <img src="images/logo-mega-grafica.png" 
+                 alt="Mega Gráfica"
+                 onerror="this.style.display='none'; this.parentElement.innerHTML='Mega Gráfica';">
+        </div>
+        <nav class="nav-menu">
+            <a href="#home">Home</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#depoimentos">Clientes</a>
+            <a href="#contato">Contato</a>
+        </nav>
+        <a href="https://wa.me/5521992067621" class="btn-header-wpp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </header>
+    
     <!-- HERO -->
     <section class="hero" id="home">
         <div class="hero-content">
@@ -1464,20 +1456,20 @@
         </div>
 
         <!-- SOBRE - COM IMPRESSORA ANIMADA -->
-<section id="sobre" class="about">
-    <div class="about-grid">
-        <div class="about-text">
-            <h2>Sobre a Mega Gráfica</h2>
-            <p>Gráfica 100% online no Rio de Janeiro. Qualidade e agilidade para seu negócio.</p>
-        </div>
-        <div class="about-image printer-animation">
-            <i class="fas fa-print"></i>
-            <div class="paper-sheet paper-1"></div>
-            <div class="paper-sheet paper-2"></div>
-            <div class="paper-sheet paper-3"></div>
-        </div>
-    </div>
-</section>
+        <section id="sobre" class="about">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2>Sobre a Mega Gráfica</h2>
+                    <p>Gráfica 100% online no Rio de Janeiro. Qualidade e agilidade para seu negócio.</p>
+                </div>
+                <div class="about-image printer-animation">
+                    <i class="fas fa-print"></i>
+                    <div class="paper-sheet paper-1"></div>
+                    <div class="paper-sheet paper-2"></div>
+                    <div class="paper-sheet paper-3"></div>
+                </div>
+            </div>
+        </section>
 
         <!-- PROCESSO -->
         <section class="section-title">
@@ -1525,7 +1517,7 @@
                 </div>
             </div>
         </section>
-
+    </div>
 
     <!-- FOOTER -->
     <footer class="footer">
@@ -1537,7 +1529,7 @@
         <div class="footer-bottom"><p>© 2025 Mega Gráfica</p></div>
     </footer>
 
-    <!-- WHATSAPP -->
+    <!-- WHATSAPP FLUTUANTE -->
     <a href="https://wa.me/5521992067621" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
 
     <script>
