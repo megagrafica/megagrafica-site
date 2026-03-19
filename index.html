@@ -1041,11 +1041,12 @@
             box-shadow: 0 20px 40px rgba(37, 211, 102, 0.5);
         }
 
-        /* RESPONSIVIDADE */
+        /* RESPONSIVIDADE - VERSÃO MOBILE CORRIGIDA E MAIS COMPACTA */
         @media (max-width: 768px) {
             .top-bar {
                 flex-direction: column;
                 text-align: center;
+                padding: 0.5rem 3%;
             }
             
             .top-bar-contact {
@@ -1053,23 +1054,37 @@
                 gap: 0.5rem;
             }
             
+            /* HEADER MAIS COMPACTO */
             .header {
-                flex-direction: column;
-                text-align: center;
+                padding: 0.5rem 3%;
+                gap: 0.5rem;
+            }
+            
+            /* LOGO MENOR */
+            .logo img {
+                height: 40px;
             }
             
             .nav-menu {
                 justify-content: center;
+                gap: 0.8rem;
             }
             
+            .nav-menu a {
+                font-size: 0.8rem;
+                font-weight: 600;
+            }
+            
+            /* WHATSAPP ÍCONE MENOR */
             .btn-header-wpp {
-                width: 45px;
-                height: 45px;
-                font-size: 1.5rem;
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
             }
             
             .hero-content {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
             
             .hero-text {
@@ -1082,10 +1097,12 @@
             
             .process-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
             
             .contact-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
             
             .whatsapp-float {
@@ -1104,13 +1121,44 @@
                 width: 45px;
                 height: 35px;
             }
+            
+            .paper-1 {
+                bottom: 25px;
+                right: 20px;
+            }
+            
+            .paper-2 {
+                bottom: 15px;
+                right: 35px;
+            }
+            
+            .paper-3 {
+                bottom: 5px;
+                right: 50px;
+            }
         }
         
         @media (max-width: 480px) {
+            .header {
+                padding: 0.3rem 3%;
+            }
+            
+            .logo img {
+                height: 35px;
+            }
+            
+            .nav-menu {
+                gap: 0.5rem;
+            }
+            
+            .nav-menu a {
+                font-size: 0.7rem;
+            }
+            
             .btn-header-wpp {
-                width: 40px;
-                height: 40px;
-                font-size: 1.3rem;
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
             }
             
             .printer-animation i {
@@ -1120,6 +1168,34 @@
             .paper-sheet {
                 width: 35px;
                 height: 28px;
+            }
+            
+            .paper-1 {
+                bottom: 20px;
+                right: 15px;
+            }
+            
+            .paper-2 {
+                bottom: 12px;
+                right: 28px;
+            }
+            
+            .paper-3 {
+                bottom: 4px;
+                right: 41px;
+            }
+            
+            .hero {
+                padding: 3rem 3%;
+            }
+            
+            .hero-features {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1299,7 +1375,7 @@
             </div>
             <div class="footer-col">
                 <h4>Horário</h4>
-                <p>Seg-Sex: 8h-18h</p>
+                <p>Seg-Sex: 8h-18h | Sáb: 9h-13h</p>
             </div>
         </div>
         <div class="footer-bottom">
